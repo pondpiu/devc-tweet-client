@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Avatar from 'react-avatar'
 
-import { useTweets, useCreateTweet } from './hooks'
 import {
   TweetContainer,
   AvatarContainer,
@@ -19,6 +18,18 @@ import {
   Input,
   Button,
 } from './Elements'
+import { useTweets, useCreateTweet, useRetweet } from './hooks'
+
+const Actions = ({ tweet }) => {
+  const { retweet, loading: retweeting } = useRetweet()
+  const targetRetweet = tweet.type === 'RETWEET' ? tweet.source : tweet
+  return (
+    <ActionContainer>
+      <Action onClick={() => retweet(targetRetweet, USER)}>retweet </Action>
+      <Action>like </Action>
+    </ActionContainer>
+  )
+}
 
 const Tweet = ({ tweet, inRetweet }) => (
   <TweetContainer inRetweet={inRetweet}>
@@ -31,16 +42,11 @@ const Tweet = ({ tweet, inRetweet }) => (
         <Username>@{tweet.user.username}</Username>
       </TweeterInfo>
       <Message>{tweet.message}</Message>
-      {!inRetweet && (
-        <ActionContainer>
-          <Action>retweet </Action>
-          <Action>like </Action>
-        </ActionContainer>
-      )}
+      {!inRetweet && <Actions tweet={tweet} />}
     </ContentContainer>
   </TweetContainer>
 )
-const Retweet = ({ tweet }) => (
+const Retweet = ({ tweet, cb }) => (
   <TweetContainer>
     <AvatarContainer>
       <Avatar name={tweet.user.displayName} size="40" round />
@@ -54,10 +60,7 @@ const Retweet = ({ tweet }) => (
       <TweetInRetweetContainer>
         <Tweet tweet={tweet.source} inRetweet />
       </TweetInRetweetContainer>
-      <ActionContainer>
-        <Action>retweet </Action>
-        <Action>like </Action>
-      </ActionContainer>
+      <Actions tweet={tweet} />
     </ContentContainer>
   </TweetContainer>
 )
@@ -76,10 +79,7 @@ const TweetInput = ({ add, loading }) => {
           setInputValue('')
           add({
             message: inputValue,
-            user: {
-              username: 'pondpiu',
-              displayName: 'Pond',
-            },
+            user: USER,
           })
         }}
         disabled={loading || !inputValue || inputValue.length === 0}
@@ -99,7 +99,11 @@ const Timeline = () => {
         <div>Loading...</div>
       ) : (
         tweets.map(tweet =>
-          tweet.source ? <Retweet tweet={tweet} /> : <Tweet tweet={tweet} />,
+          tweet.type === 'RETWEET' ? (
+            <Retweet tweet={tweet} />
+          ) : (
+            <Tweet tweet={tweet} />
+          ),
         )
       )}
       <TweetInput add={add} loading={adding} />
@@ -116,3 +120,8 @@ const Home = () => {
 }
 
 export default Home
+
+const USER = {
+  username: 'pondpiu',
+  displayName: 'Pond',
+}

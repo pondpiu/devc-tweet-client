@@ -6,6 +6,7 @@ let data = {
     {
       id: 1,
       createdAt: '2019-07-26T05:29:47.878Z',
+      type: 'TWEET',
       user: {
         displayName: 'Aik',
         username: 'blutarche',
@@ -15,6 +16,7 @@ let data = {
     {
       id: 2,
       createdAt: '2019-07-26T05:40:47.878Z',
+      type: 'TWEET',
       user: {
         displayName: 'Kohpai',
         username: 'bamboo',
@@ -23,6 +25,7 @@ let data = {
     },
     {
       id: 101,
+      type: 'RETWEET',
       user: {
         displayName: 'Kohpai',
         username: 'bamboo',
@@ -31,6 +34,7 @@ let data = {
       source: {
         id: 1,
         createdAt: '2019-07-26T05:29:47.878Z',
+        type: 'TWEET',
         user: {
           displayName: 'Aik',
           username: 'blutarche',

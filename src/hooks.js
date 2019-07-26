@@ -22,7 +22,28 @@ export const useCreateTweet = () => {
     add: tw => {
       setLoading(true)
       setTimeout(() => {
-        addTweet(tw)
+        addTweet({
+          ...tw,
+          type: 'TWEET',
+        })
+        setLoading(false)
+      }, 500)
+    },
+    loading,
+  }
+}
+
+export const useRetweet = () => {
+  const [loading, setLoading] = useState(false)
+  return {
+    retweet: (source, user) => {
+      setLoading(true)
+      setTimeout(() => {
+        addTweet({
+          user,
+          source,
+          type: 'RETWEET',
+        })
         setLoading(false)
       }, 500)
     },
