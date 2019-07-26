@@ -40,15 +40,3 @@ export const useRetweet = () => {
     loading,
   }
 }
-
-export const useLike = () => {
-  const [loading, setLoading] = useState(false)
-  return {
-    like: async (tweet, user) => {
-      setLoading(true)
-      // await likeTweet({ tweet, user })
-      setLoading(false)
-    },
-    loading,
-  }
-}

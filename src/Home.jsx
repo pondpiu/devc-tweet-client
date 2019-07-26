@@ -18,16 +18,14 @@ import {
   Input,
   Button,
 } from './Elements'
-import { useTweets, useCreateTweet, useRetweet, useLike } from './hooks'
+import { useTweets, useCreateTweet, useRetweet } from './hooks'
 
 const Actions = ({ tweet }) => {
   const { retweet, loading: retweeting } = useRetweet()
-  const { like, loading: liking } = useLike()
   const targetRetweet = tweet.type === 'RETWEET' ? tweet.source : tweet
   return (
     <ActionContainer>
       <Action onClick={() => retweet(targetRetweet, USER)}>retweet </Action>
-      <Action onClick={() => like(targetRetweet, USER)}>like </Action>
     </ActionContainer>
   )
 }
