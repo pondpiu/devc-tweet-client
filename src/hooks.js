@@ -50,3 +50,17 @@ export const useRetweet = () => {
     loading,
   }
 }
+
+export const useLike = () => {
+  const [loading, setLoading] = useState(false)
+  return {
+    like: (tweet, user) => {
+      setLoading(true)
+      setTimeout(() => {
+        // likeTweet()
+        setLoading(false)
+      }, 500)
+    },
+    loading,
+  }
+}
