@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Avatar from 'react-avatar'
+import moment from 'moment'
 
 import {
   TweetContainer,
@@ -18,6 +19,7 @@ import {
   Input,
   Button,
   RetweetsCount,
+  DateTime,
 } from './Elements'
 import { useTweets, useCreateTweet, useRetweet } from './hooks'
 
@@ -47,6 +49,7 @@ const Tweet = ({ tweet, inRetweet }) => (
       <Message>{tweet.message}</Message>
       {!inRetweet && <Actions tweet={tweet} />}
     </ContentContainer>
+    <DateTime>{formatTweetDate(tweet.createdAt)}</DateTime>
   </TweetContainer>
 )
 const Retweet = ({ tweet, cb }) => (
@@ -65,6 +68,7 @@ const Retweet = ({ tweet, cb }) => (
       </TweetInRetweetContainer>
       <Actions tweet={tweet} />
     </ContentContainer>
+    <DateTime>{formatTweetDate(tweet.createdAt)}</DateTime>
   </TweetContainer>
 )
 
@@ -124,4 +128,9 @@ export default Home
 const USER = {
   username: 'pondpiu',
   displayName: 'Pond',
+}
+
+const formatTweetDate = time => {
+  if (!time) return null
+  return moment(time).fromNow()
 }

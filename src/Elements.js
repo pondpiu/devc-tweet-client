@@ -15,6 +15,9 @@ export const TweetContainer = styled.div`
   padding: 16px 16px 16px;
   border-bottom: ${p => (p.inRetweet ? `` : '1px #ddd solid')};
   background-color: #fff;
+  position: relative;
+  min-width: 320px;
+  max-width: 100%;
 `
 export const AvatarContainer = styled.div`
   margin-right: 10px;
@@ -40,6 +43,7 @@ export const TweetInRetweetContainer = styled.div`
   border: 1px #eee solid;
   ${'' /* padding: 0 16px 8px; */}
   margin-top: 4px;
+  width: 100%;
 `
 export const RetweetLabel = styled.div`
   margin-left: 8px;
@@ -91,4 +95,10 @@ export const Button = styled.div`
 export const RetweetsCount = styled.div`
   color: #aaa;
   margin-left: 4px;
+`
+export const DateTime = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #aaa;
 `
