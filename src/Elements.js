@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 
 export const Action = styled.div`
-  margin-right: 20px;
   color: #88aaff;
   cursor: pointer;
   &:hover {
@@ -87,4 +86,9 @@ export const Button = styled.div`
   &:hover {
     opacity: 0.8;
   }
+`
+
+export const RetweetsCount = styled.div`
+  color: #aaa;
+  margin-left: 4px;
 `
