@@ -80,10 +80,7 @@ const TweetInput = ({ add, loading }) => {
       <Button
         onClick={() => {
           setInputValue('')
-          add({
-            message: inputValue,
-            user: USER,
-          })
+          add(inputValue)
         }}
         disabled={loading || !inputValue || inputValue.length === 0}
       >
