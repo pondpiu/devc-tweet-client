@@ -15,10 +15,7 @@ export const useCreateTweet = () => {
   return {
     add: async message => {
       setLoading(true)
-      // await createTweet({
-      //   message,
-      //   type: 'TWEET',
-      // })
+      // await createTweet()
       setLoading(false)
     },
     loading,
@@ -30,11 +27,7 @@ export const useRetweet = () => {
   return {
     retweet: async (source, user) => {
       setLoading(true)
-      await addTweet({
-        user,
-        source,
-        type: 'RETWEET',
-      })
+      // await retweet()
       setLoading(false)
     },
     loading,
