@@ -25,7 +25,7 @@ export const useCreateTweet = () => {
 export const useRetweet = () => {
   const [loading, setLoading] = useState(false)
   return {
-    retweet: async (source, user) => {
+    retweet: async tweetId => {
       setLoading(true)
       // await retweet()
       setLoading(false)

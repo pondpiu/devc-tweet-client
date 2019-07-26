@@ -26,7 +26,7 @@ const Actions = ({ tweet }) => {
   const targetRetweet = tweet.type === 'RETWEET' ? tweet.source : tweet
   return (
     <ActionContainer>
-      <Action onClick={() => retweet(targetRetweet, USER)}>retweet </Action>
+      <Action onClick={() => retweet(targetRetweet.id)}>retweet </Action>
       {tweet.retweetsCount && tweet.retweetsCount > 0 ? (
         <RetweetsCount>({tweet.retweetsCount})</RetweetsCount>
       ) : null}
