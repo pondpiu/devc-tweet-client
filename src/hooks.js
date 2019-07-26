@@ -15,10 +15,10 @@ export const useCreateTweet = () => {
   return {
     add: async message => {
       setLoading(true)
-      await addTweet({
-        message,
-        type: 'TWEET',
-      })
+      // await createTweet({
+      //   message,
+      //   type: 'TWEET',
+      // })
       setLoading(false)
     },
     loading,
