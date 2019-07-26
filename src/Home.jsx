@@ -27,9 +27,9 @@ const Actions = ({ tweet }) => {
   return (
     <ActionContainer>
       <Action onClick={() => retweet(targetRetweet, USER)}>retweet </Action>
-      {tweet.retweetsCount && tweet.retweetsCount > 0 && (
+      {tweet.retweetsCount && tweet.retweetsCount > 0 ? (
         <RetweetsCount>({tweet.retweetsCount})</RetweetsCount>
-      )}
+      ) : null}
     </ActionContainer>
   )
 }

@@ -12,6 +12,7 @@ let data = {
         username: 'blutarche',
       },
       message: 'Hello, world!',
+      retweetsCount: 0,
     },
     {
       id: 2,
