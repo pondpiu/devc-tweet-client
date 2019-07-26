@@ -13,12 +13,13 @@ export const useTweets = () => {
 export const useCreateTweet = () => {
   const [loading, setLoading] = useState(false)
   return {
-    add: tw => {
+    add: async tw => {
       setLoading(true)
-      addTweet({
+      await addTweet({
         ...tw,
         type: 'TWEET',
       })
+      setLoading(false)
     },
     loading,
   }
@@ -27,9 +28,9 @@ export const useCreateTweet = () => {
 export const useRetweet = () => {
   const [loading, setLoading] = useState(false)
   return {
-    retweet: (source, user) => {
+    retweet: async (source, user) => {
       setLoading(true)
-      addTweet({
+      await addTweet({
         user,
         source,
         type: 'RETWEET',
@@ -43,9 +44,9 @@ export const useRetweet = () => {
 export const useLike = () => {
   const [loading, setLoading] = useState(false)
   return {
-    like: (tweet, user) => {
+    like: async (tweet, user) => {
       setLoading(true)
-      // likeTweet()
+      // await likeTweet({ tweet, user })
       setLoading(false)
     },
     loading,
