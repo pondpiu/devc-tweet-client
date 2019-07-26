@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-import { getTweets, addTweet } from './mockdata'
+import { getTweets } from './mockdata'
 
 export const useTweets = () => {
-  const [loading, setLoading] = useState(false)
+  const tweets = getTweets()
   return {
-    tweets: getTweets(),
-    loading,
+    tweets,
+    // loading,
   }
 }
 
