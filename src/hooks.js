@@ -1,15 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import { getTweets, addTweet } from './mockdata'
 
 export const useTweets = () => {
   const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 500)
-  }, [])
   return {
     tweets: getTweets(),
     loading,
@@ -21,13 +15,10 @@ export const useCreateTweet = () => {
   return {
     add: tw => {
       setLoading(true)
-      setTimeout(() => {
-        addTweet({
-          ...tw,
-          type: 'TWEET',
-        })
-        setLoading(false)
-      }, 500)
+      addTweet({
+        ...tw,
+        type: 'TWEET',
+      })
     },
     loading,
   }
@@ -38,14 +29,12 @@ export const useRetweet = () => {
   return {
     retweet: (source, user) => {
       setLoading(true)
-      setTimeout(() => {
-        addTweet({
-          user,
-          source,
-          type: 'RETWEET',
-        })
-        setLoading(false)
-      }, 500)
+      addTweet({
+        user,
+        source,
+        type: 'RETWEET',
+      })
+      setLoading(false)
     },
     loading,
   }
@@ -56,10 +45,8 @@ export const useLike = () => {
   return {
     like: (tweet, user) => {
       setLoading(true)
-      setTimeout(() => {
-        // likeTweet()
-        setLoading(false)
-      }, 500)
+      // likeTweet()
+      setLoading(false)
     },
     loading,
   }
